@@ -1,0 +1,49 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Material da Aula/arma/sniperCamo.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://Player.gd" type="Script" id=2]
+[ext_resource path="res://Material da Aula/sons/tiro.wav" type="AudioStream" id=3]
+[ext_resource path="res://Material da Aula/sons/municao.wav" type="AudioStream" id=4]
+[ext_resource path="res://Material da Aula/sons/dano.wav" type="AudioStream" id=5]
+[ext_resource path="res://Material da Aula/sons/vidas.wav" type="AudioStream" id=6]
+[ext_resource path="res://Material da Aula/sons/tema.wav" type="AudioStream" id=7]
+[ext_resource path="res://Material da Aula/sons/morteinimigo.wav" type="AudioStream" id=8]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.4
+height = 1.4
+
+[node name="Player" type="KinematicBody"]
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 1.1, 0 )
+shape = SubResource( 1 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9897, 0 )
+
+[node name="arma" type="MeshInstance" parent="Camera"]
+transform = Transform( -7.63018, -0.416935, -2.36781, -0.989848, 7.72483, 1.82953, 2.19101, 2.03792, -7.41932, 0.261, -0.277201, -0.611 )
+mesh = ExtResource( 1 )
+
+[node name="bala" type="Spatial" parent="Camera/arma"]
+transform = Transform( 1, -7.45058e-09, -1.19209e-07, -7.45058e-09, 1, 2.38419e-07, -2.98023e-08, 7.45058e-08, 1, -0.00184118, 0.00555401, 0.0730969 )
+
+[node name="tiro" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 3 )
+
+[node name="municao" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 4 )
+
+[node name="vidas" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 6 )
+
+[node name="morteinimigo" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 8 )
+
+[node name="dano" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 5 )
+
+[node name="tema" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 7 )
